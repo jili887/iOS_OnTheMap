@@ -62,10 +62,18 @@ class TableViewController: UITableViewController {
         }
     }
     
-    @IBAction func refreshData(_ sender: Any) {
+    @IBAction func refreshData(_ sender: UIBarButtonItem) {
         self.loadLocationsData()
         self.locations = LocationModel.locationResults
         self.tableView.reloadData()
+    }
+    
+    @IBAction func logout(_ sender: UIBarButtonItem) {
+        APIClient.logout{
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     // MARK: Handle download error

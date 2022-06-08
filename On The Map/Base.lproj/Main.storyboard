@@ -204,7 +204,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="372-NO-Y36" userLabel="On The Map">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Ba3-Ce-cHJ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Ba3-Ce-cHJ">
+                            <connections>
+                                <action selector="logout:" destination="kXA-Ku-D4q" id="8qz-Ja-RjS"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="plus" catalog="system" id="Hma-fl-17E" userLabel="Add New Pin"/>
                             <barButtonItem image="arrow.clockwise" catalog="system" id="2Nr-lT-njo" userLabel="Refresh">
