@@ -29,15 +29,15 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: Login button
-    func loginTapped(_ sender: Any) {
-        
+    @IBAction func loginTapped(_ sender: Any) {
+        setLoggingIn(true)
         APIClient.login(username: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "", completion: self.handleLoginResponse(success:error:))
     }
 
     func handleLoginResponse(success: Bool, error: Error?) {
+        setLoggingIn(false)
         if success {
-            //TODO: Handle completion and navigate segue, add loading indicator and set showing
-            setLoggingIn(true)
+            performSegue(withIdentifier: "LoginSuccess", sender: self)
         } else {
             showLoginError(message: error?.localizedDescription ?? "")
         }

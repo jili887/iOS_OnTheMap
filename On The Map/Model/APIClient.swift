@@ -16,14 +16,18 @@ class APIClient {
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1/"
         static let session = "session"
+        static let studentLocation = "StudentLocation"
         
         case login
         case logout
+        case getPinnedLocations
         
         var stringValue: String {
             switch self {
                 case .login: return Endpoints.base + Endpoints.session
                 case .logout: return Endpoints.base + Endpoints.session
+                case .getPinnedLocations: return Endpoints.base + Endpoints.studentLocation
+                + "?limit=100&order=-updatedAt"
             }
         }
         
@@ -32,7 +36,7 @@ class APIClient {
         }
     }
     
-    //MARK: Login
+    //MARK: Login Network call
     class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         let udacityDetail = Udacity(username: username, password: password)
         let body = LoginRequest(udacity: udacityDetail)
@@ -71,5 +75,28 @@ class APIClient {
         task.resume()
     }
     
+    // MARK: Get Pinned Locations Network call
+    class func getPinnedLocations(completion: @escaping ([PinnedLocation], Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: Endpoints.getPinnedLocations.url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion([], error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(LocationResponse.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject.locations, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion([], error)
+                }
+            }
+        }
+        task.resume()
+    }
     
 }
