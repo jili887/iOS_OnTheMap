@@ -32,6 +32,7 @@ class TableViewController: UITableViewController {
                 self.showDownloadError(message: error?.localizedDescription ?? "")
             } else {
                 LocationModel.locationResults = pinnedLocations
+                self.locations = LocationModel.locationResults
             }
         })
     }
@@ -62,9 +63,9 @@ class TableViewController: UITableViewController {
         }
     }
     
+    //  MARK: Button functions
     @IBAction func refreshData(_ sender: UIBarButtonItem) {
         self.loadLocationsData()
-        self.locations = LocationModel.locationResults
         self.tableView.reloadData()
     }
     

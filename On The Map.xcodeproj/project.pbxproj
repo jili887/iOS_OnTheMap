@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A7A3730285193BB0099E945 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A372F285193BB0099E945 /* MapViewController.swift */; };
 		2AA9EACA284D3DA50025A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EAC9284D3DA50025A259 /* AppDelegate.swift */; };
 		2AA9EACC284D3DA50025A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EACB284D3DA50025A259 /* SceneDelegate.swift */; };
 		2AA9EACE284D3DA50025A259 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EACD284D3DA50025A259 /* LoginViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A7A372F285193BB0099E945 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2AA9EAC6284D3DA50025A259 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA9EAC9284D3DA50025A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AA9EACB284D3DA50025A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				2AAC8FA8284EBE9E008E30A6 /* TableViewController.swift */,
+				2A7A372F285193BB0099E945 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				2AA9EACE284D3DA50025A259 /* LoginViewController.swift in Sources */,
 				2AA9EACA284D3DA50025A259 /* AppDelegate.swift in Sources */,
 				2AA9EACC284D3DA50025A259 /* SceneDelegate.swift in Sources */,
+				2A7A3730285193BB0099E945 /* MapViewController.swift in Sources */,
 				2AAC8FA9284EBE9E008E30A6 /* TableViewController.swift in Sources */,
 				2AAC8FAB28504450008E30A6 /* LocationModel.swift in Sources */,
 				2AAC8FA7284EB845008E30A6 /* LocationResponse.swift in Sources */,
