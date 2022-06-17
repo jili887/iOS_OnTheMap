@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2A7A3730285193BB0099E945 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A372F285193BB0099E945 /* MapViewController.swift */; };
+		2A7CF7FF28569E35004AC761 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CF7FE28569E35004AC761 /* AddPinViewController.swift */; };
+		2A7CF80128582952004AC761 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CF80028582952004AC761 /* ConfirmViewController.swift */; };
+		2A7CF80528593BE7004AC761 /* PostStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CF80428593BE7004AC761 /* PostStudentLocationResponse.swift */; };
+		2A7CF80728593D96004AC761 /* PostStudentLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CF80628593D96004AC761 /* PostStudentLocationRequest.swift */; };
+		2A7CF80928594633004AC761 /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CF80828594633004AC761 /* UserDataResponse.swift */; };
 		2AA9EACA284D3DA50025A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EAC9284D3DA50025A259 /* AppDelegate.swift */; };
 		2AA9EACC284D3DA50025A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EACB284D3DA50025A259 /* SceneDelegate.swift */; };
 		2AA9EACE284D3DA50025A259 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EACD284D3DA50025A259 /* LoginViewController.swift */; };
@@ -24,6 +29,11 @@
 
 /* Begin PBXFileReference section */
 		2A7A372F285193BB0099E945 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2A7CF7FE28569E35004AC761 /* AddPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
+		2A7CF80028582952004AC761 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		2A7CF80428593BE7004AC761 /* PostStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStudentLocationResponse.swift; sourceTree = "<group>"; };
+		2A7CF80628593D96004AC761 /* PostStudentLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStudentLocationRequest.swift; sourceTree = "<group>"; };
+		2A7CF80828594633004AC761 /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
 		2AA9EAC6284D3DA50025A259 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA9EAC9284D3DA50025A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AA9EACB284D3DA50025A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +102,9 @@
 				2AA9EAE4284DB1D50025A259 /* APIClient.swift */,
 				2AAC8FA6284EB845008E30A6 /* LocationResponse.swift */,
 				2AAC8FAA28504450008E30A6 /* LocationModel.swift */,
+				2A7CF80428593BE7004AC761 /* PostStudentLocationResponse.swift */,
+				2A7CF80628593D96004AC761 /* PostStudentLocationRequest.swift */,
+				2A7CF80828594633004AC761 /* UserDataResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,6 +121,8 @@
 			children = (
 				2AAC8FA8284EBE9E008E30A6 /* TableViewController.swift */,
 				2A7A372F285193BB0099E945 /* MapViewController.swift */,
+				2A7CF7FE28569E35004AC761 /* AddPinViewController.swift */,
+				2A7CF80028582952004AC761 /* ConfirmViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,14 +198,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7CF80728593D96004AC761 /* PostStudentLocationRequest.swift in Sources */,
 				2AA9EACE284D3DA50025A259 /* LoginViewController.swift in Sources */,
+				2A7CF7FF28569E35004AC761 /* AddPinViewController.swift in Sources */,
 				2AA9EACA284D3DA50025A259 /* AppDelegate.swift in Sources */,
+				2A7CF80128582952004AC761 /* ConfirmViewController.swift in Sources */,
 				2AA9EACC284D3DA50025A259 /* SceneDelegate.swift in Sources */,
+				2A7CF80528593BE7004AC761 /* PostStudentLocationResponse.swift in Sources */,
 				2A7A3730285193BB0099E945 /* MapViewController.swift in Sources */,
 				2AAC8FA9284EBE9E008E30A6 /* TableViewController.swift in Sources */,
 				2AAC8FAB28504450008E30A6 /* LocationModel.swift in Sources */,
 				2AAC8FA7284EB845008E30A6 /* LocationResponse.swift in Sources */,
 				2AA9EAE1284DAEE60025A259 /* LoginRequest.swift in Sources */,
+				2A7CF80928594633004AC761 /* UserDataResponse.swift in Sources */,
 				2AA9EAE3284DB0820025A259 /* LoginResponse.swift in Sources */,
 				2AA9EAE5284DB1D50025A259 /* APIClient.swift in Sources */,
 			);

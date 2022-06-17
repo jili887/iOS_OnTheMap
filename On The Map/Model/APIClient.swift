@@ -17,10 +17,13 @@ class APIClient {
         static let base = "https://onthemap-api.udacity.com/v1/"
         static let session = "session"
         static let studentLocation = "StudentLocation"
+        static let users = "users/"
         
         case login
         case logout
         case getPinnedLocations
+        case postStudentLocation
+        case getUserData
         
         var stringValue: String {
             switch self {
@@ -28,6 +31,8 @@ class APIClient {
                 case .logout: return Endpoints.base + Endpoints.session
                 case .getPinnedLocations: return Endpoints.base + Endpoints.studentLocation
                 + "?limit=100&order=-updatedAt"
+                case .postStudentLocation: return Endpoints.base + Endpoints.studentLocation
+                case .getUserData: return Endpoints.base + Endpoints.users + Auth.accountKey
             }
         }
         
@@ -125,4 +130,64 @@ class APIClient {
         }
         task.resume()
     }
+    
+    // MARK: Get User Data Network Call
+    class func getUserData(completion: @escaping (UserDataResponse?, Error?) -> Void) {
+        let request = URLRequest(url: Endpoints.getUserData.url)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(UserDataResponse.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    // MARK: Post Location Network Call
+    class func postStudentLocation(postRequest: PostStudentLocationRequest, completion: @escaping (PostStudentLocationResponse?, Error?) -> Void) {
+        
+        var request = URLRequest(url: Endpoints.postStudentLocation.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let body = postRequest
+        request.httpBody = try! JSONEncoder().encode(body)
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(PostStudentLocationResponse.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
 }
