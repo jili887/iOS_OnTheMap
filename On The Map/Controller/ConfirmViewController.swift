@@ -15,9 +15,16 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
     var location = CLLocationCoordinate2D()
     var locationString = ""
     var url = ""
+    let reuseId = "pin"
     
     @IBOutlet weak var confirmMapView: MKMapView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        confirmMapView.setCenter(location, animated: false)
+        confirmMapView.addAnnotation(mapLocation)
+    }
     
     @IBAction func finish(_ sender: Any) {
         APIClient.getUserData(completion: {(userDataReponse, error) in
@@ -44,5 +51,29 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
         let alertVC = UIAlertController(title: "Add new location Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         show(alertVC, sender: nil)
+    }
+    
+    // MARK: MKMapViewDelegate
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let app = UIApplication.shared
+        if let toOpen = view.annotation!.subtitle! {
+            app.open(URL(string: toOpen)!)
+        }
     }
 }

@@ -36,7 +36,7 @@
                                             <constraint firstAttribute="height" constant="35" id="CgH-iG-Zag"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAD-Sj-SBf" userLabel="Login Button">
                                         <rect key="frame" x="0.0" y="90" width="294" height="35"/>

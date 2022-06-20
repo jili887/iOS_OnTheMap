@@ -81,7 +81,7 @@ class APIClient {
     }
     
     // MARK: Get Pinned Locations Network call
-    class func getPinnedLocations(completion: @escaping ([PinnedLocation], Error?) -> Void) {
+    class func getPinnedLocations(completion: @escaping ([PinnedLocation]?, Error?) -> Void) {
         let request = URLRequest(url: Endpoints.getPinnedLocations.url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {

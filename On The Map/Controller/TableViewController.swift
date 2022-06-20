@@ -27,11 +27,13 @@ class TableViewController: UITableViewController {
     
     // MARK: Load pined locations for Table view
     func loadLocationsData() {
-        APIClient.getPinnedLocations(completion: { (pinnedLocations, error) in
-            if (error != nil) {
+        APIClient.getPinnedLocations(completion: { (data, error) in
+            guard let data = data else {
                 self.showDownloadError(message: error?.localizedDescription ?? "")
-            } else {
-                LocationModel.locationResults = pinnedLocations
+                return
+            }
+            DispatchQueue.main.async {
+                LocationModel.locationResults = data
                 self.locations = LocationModel.locationResults
             }
         })

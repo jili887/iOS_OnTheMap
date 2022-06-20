@@ -22,28 +22,20 @@ class AddPinViewController: UIViewController {
             showError(message: "Please enter a new location")
             return
         }
-        guard location != "" else {
-            showError(message: "Empty location")
-            return
-        }
-        
+      
         guard let url = urlField.text else {
             showError(message: "Please enter an URL")
             return
         }
-        guard url != "" else {
-            showError(message: "Empty URL")
-            return
-        }
         
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(location) { (placemark, error) in
+        geoCoder.geocodeAddressString(location) { (data, error) in
             guard error == nil else {
                 self.showError(message: "Can not find this location: \(location)")
                 return
             }
-            self.locationCoordinate = (placemark?.first?.location!.coordinate)!
-            self.performSegue(withIdentifier: "confirmLocation", sender: nil)
+            self.locationCoordinate = (data?.first?.location!.coordinate)!
+            self.performSegue(withIdentifier: "confirmLocation", sender: self)
         }
     }
     

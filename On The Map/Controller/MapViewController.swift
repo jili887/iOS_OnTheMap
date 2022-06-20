@@ -14,10 +14,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var annotations = [MKPointAnnotation]()
     let reuseId = "pin"
     
+    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         
         self.loadLocationsData()
         self.mapView.addAnnotations(annotations)
@@ -28,13 +30,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         self.mapView.addAnnotations(annotations)
     }
+    
     // MARK: Load pined locations for Map view
     func loadLocationsData() {
-        APIClient.getPinnedLocations(completion: { (pinnedLocations, error) in
-            if (error != nil) {
+        APIClient.getPinnedLocations(completion: { (data, error) in
+            guard let data = data else {
                 self.showDownloadError(message: error?.localizedDescription ?? "")
-            } else {
-                LocationModel.locationResults = pinnedLocations
+                return
+            }
+            DispatchQueue.main.async {
+                LocationModel.locationResults = data
                 self.locations = LocationModel.locationResults
                 self.parsePinnedLocations()
             }
