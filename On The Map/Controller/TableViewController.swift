@@ -16,13 +16,8 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.loadLocationsData()
+        self.locations = LocationModel.locationResults
         self.tableView.reloadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
     }
     
     // MARK: Load pined locations for Table view
@@ -68,6 +63,7 @@ class TableViewController: UITableViewController {
     //  MARK: Button functions
     @IBAction func refreshData(_ sender: UIBarButtonItem) {
         self.loadLocationsData()
+        self.locations = LocationModel.locationResults
         self.tableView.reloadData()
     }
     

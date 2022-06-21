@@ -22,12 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         self.loadLocationsData()
-        self.mapView.addAnnotations(annotations)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        self.locations = LocationModel.locationResults
         self.mapView.addAnnotations(annotations)
     }
     
@@ -59,6 +54,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotation.subtitle = location.mediaURL
             annotations.append(annotation)
         }
+        self.mapView.addAnnotations(annotations)
     }
     
     // MARK: MKMapViewDelegate
@@ -90,6 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Button functions
     @IBAction func refreshMapData(_ sender: UIBarButtonItem) {
         self.loadLocationsData()
+        self.locations = LocationModel.locationResults
         self.mapView.addAnnotations(annotations)
     }
     

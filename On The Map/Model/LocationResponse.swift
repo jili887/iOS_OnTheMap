@@ -9,6 +9,10 @@ import Foundation
 
 struct LocationResponse: Codable {
     let locations: [PinnedLocation]
+    
+    enum CodingKeys: String, CodingKey {
+        case locations = "results"
+    }
 }
 
 struct PinnedLocation: Codable {

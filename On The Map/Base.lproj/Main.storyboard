@@ -267,7 +267,7 @@
                             </barButtonItem>
                             <barButtonItem title="Refresh" image="icon_refresh" id="xuP-sp-AOX">
                                 <connections>
-                                    <action selector="refreshData:" destination="6hy-FB-4dU" id="WgZ-k7-elO"/>
+                                    <action selector="refreshMapData:" destination="6hy-FB-4dU" id="w3y-vd-QHw"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
