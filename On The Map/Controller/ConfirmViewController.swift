@@ -50,7 +50,7 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
     func showError(message: String) {
         let alertVC = UIAlertController(title: "Add new location Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true, completion: nil)
     }
     
     // MARK: MKMapViewDelegate

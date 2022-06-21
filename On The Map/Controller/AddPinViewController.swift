@@ -18,23 +18,24 @@ class AddPinViewController: UIViewController {
     
     // MARK: Find location button
     @IBAction func findLocation(_ sender: Any) {
-        guard let location = locationField.text else {
+        if (locationField.text == nil || locationField.text == "") {
             showError(message: "Please enter a new location")
             return
         }
-      
-        guard let url = urlField.text else {
+        
+        if (urlField.text == nil || urlField.text == "") {
             showError(message: "Please enter an URL")
             return
         }
         
         let geoCoder = CLGeocoder()
+        let location = locationField.text!
         geoCoder.geocodeAddressString(location) { (data, error) in
-            guard error == nil else {
+            guard let data = data else {
                 self.showError(message: "Can not find this location: \(location)")
                 return
             }
-            self.locationCoordinate = (data?.first?.location!.coordinate)!
+            self.locationCoordinate = data.first!.location!.coordinate
             self.performSegue(withIdentifier: "confirmLocation", sender: self)
         }
     }
@@ -43,19 +44,19 @@ class AddPinViewController: UIViewController {
         if segue.identifier == "confirmLocation" {
             let confirmVC = segue.destination as! ConfirmViewController
             confirmVC.location = self.locationCoordinate
-            confirmVC.locationString = self.locationField.text!
-            confirmVC.url = self.urlField.text!
+            confirmVC.locationString = self.locationField.text ?? ""
+            confirmVC.url = self.urlField.text ?? ""
         }
     }
     
     // MARK: Cancel button
     @IBAction func cancelAddPin(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {})
     }
     
     func showError(message: String) {
         let alertVC = UIAlertController(title: "Erorr", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true, completion: nil)
     }
 }

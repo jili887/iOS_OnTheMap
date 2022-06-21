@@ -340,7 +340,7 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="findLocation:" destination="SGo-WR-Imv" eventType="touchUpInside" id="Oth-em-NDY"/>
+                                    <action selector="findLocation:" destination="SGo-WR-Imv" eventType="touchUpInside" id="hdz-Td-cAP"/>
                                 </connections>
                             </button>
                         </subviews>
