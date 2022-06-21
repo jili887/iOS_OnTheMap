@@ -27,8 +27,12 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
         mapLocation.coordinate = self.location
         mapLocation.title = self.locationString
         mapLocation.subtitle = self.url
-        confirmMapView.setCenter(location, animated: false)
+        let region = MKCoordinateRegion(center: self.location, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        
         confirmMapView.addAnnotation(mapLocation)
+        confirmMapView.setRegion(region, animated: true)
+        confirmMapView.setCenter(location, animated: false)
+        confirmMapView.regionThatFits(region)
     }
     
     @IBAction func finish(_ sender: Any) {

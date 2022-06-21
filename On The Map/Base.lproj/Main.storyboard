@@ -343,22 +343,28 @@
                                     <action selector="findLocation:" destination="SGo-WR-Imv" eventType="touchUpInside" id="hdz-Td-cAP"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-Bv-br6">
+                                <rect key="frame" x="197" y="541" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="deg-WS-2e8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="deg-WS-2e8" firstAttribute="trailing" secondItem="yBD-WS-MYY" secondAttribute="trailing" constant="60" id="2ZF-FQ-DGf"/>
                             <constraint firstItem="7qx-3J-bdD" firstAttribute="top" secondItem="SUq-WE-wcM" secondAttribute="bottom" constant="25" id="636-xN-byv"/>
+                            <constraint firstItem="deg-WS-2e8" firstAttribute="trailing" secondItem="iJf-Bv-br6" secondAttribute="trailing" constant="197" id="F13-30-hNt"/>
                             <constraint firstItem="deg-WS-2e8" firstAttribute="trailing" secondItem="SUq-WE-wcM" secondAttribute="trailing" constant="60" id="Hqi-3R-yEF"/>
                             <constraint firstItem="deg-WS-2e8" firstAttribute="trailing" secondItem="Od0-M7-hG5" secondAttribute="trailing" constant="60" id="Jkk-Nc-Obm"/>
                             <constraint firstItem="Od0-M7-hG5" firstAttribute="leading" secondItem="deg-WS-2e8" secondAttribute="leading" constant="60" id="Jsn-Wx-aSC"/>
                             <constraint firstItem="Od0-M7-hG5" firstAttribute="top" secondItem="deg-WS-2e8" secondAttribute="top" constant="50" id="MKm-Pg-XdV"/>
+                            <constraint firstItem="iJf-Bv-br6" firstAttribute="leading" secondItem="deg-WS-2e8" secondAttribute="leading" constant="197" id="N9E-zG-wgK"/>
                             <constraint firstItem="yBD-WS-MYY" firstAttribute="leading" secondItem="deg-WS-2e8" secondAttribute="leading" constant="60" id="NmT-zY-7Ye"/>
                             <constraint firstItem="yBD-WS-MYY" firstAttribute="top" secondItem="7qx-3J-bdD" secondAttribute="bottom" constant="25" id="dW5-1B-X2g"/>
                             <constraint firstItem="SUq-WE-wcM" firstAttribute="leading" secondItem="deg-WS-2e8" secondAttribute="leading" constant="60" id="e4a-R4-ufv"/>
                             <constraint firstItem="deg-WS-2e8" firstAttribute="trailing" secondItem="7qx-3J-bdD" secondAttribute="trailing" constant="60" id="kPQ-zg-EAh"/>
                             <constraint firstItem="7qx-3J-bdD" firstAttribute="leading" secondItem="deg-WS-2e8" secondAttribute="leading" constant="60" id="yEf-Al-cMz"/>
                             <constraint firstItem="SUq-WE-wcM" firstAttribute="top" secondItem="Od0-M7-hG5" secondAttribute="bottom" constant="80" id="zEu-v0-j1c"/>
+                            <constraint firstItem="iJf-Bv-br6" firstAttribute="top" secondItem="yBD-WS-MYY" secondAttribute="bottom" constant="25" id="zcf-yL-Pjg"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -371,6 +377,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="findLocationButton" destination="yBD-WS-MYY" id="OjG-d2-GkA"/>
+                        <outlet property="loadingIndicator" destination="iJf-Bv-br6" id="IWi-dL-ayx"/>
                         <outlet property="locationField" destination="SUq-WE-wcM" id="Vf9-iG-duO"/>
                         <outlet property="urlField" destination="7qx-3J-bdD" id="Uf4-gj-rmj"/>
                         <segue destination="ZGM-Pw-j4U" kind="show" identifier="confirmLocation" id="rjk-YU-nDS"/>

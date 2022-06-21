@@ -13,6 +13,8 @@ class AddPinViewController: UIViewController {
     
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var urlField: UITextField!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var findLocationButton: UIButton!
     
     var locationCoordinate =  CLLocationCoordinate2D()
     
@@ -27,10 +29,11 @@ class AddPinViewController: UIViewController {
             showError(message: "Please enter an URL")
             return
         }
-        
+        setLoadingIndicator(true)
         let geoCoder = CLGeocoder()
         let location = locationField.text!
         geoCoder.geocodeAddressString(location) { (data, error) in
+            self.setLoadingIndicator(false)
             guard let data = data else {
                 self.showError(message: "Can not find this location: \(location)")
                 return
@@ -52,6 +55,15 @@ class AddPinViewController: UIViewController {
     // MARK: Cancel button
     @IBAction func cancelAddPin(_ sender: Any) {
         dismiss(animated: true, completion: {})
+    }
+    
+    func setLoadingIndicator(_ loading: Bool) {
+        findLocationButton.isEnabled = !loading
+        if loading {
+            loadingIndicator.startAnimating()
+        } else {
+            loadingIndicator.stopAnimating()
+        }
     }
     
     func showError(message: String) {
