@@ -22,6 +22,11 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        confirmMapView.delegate = self
+        
+        mapLocation.coordinate = self.location
+        mapLocation.title = self.locationString
+        mapLocation.subtitle = self.url
         confirmMapView.setCenter(location, animated: false)
         confirmMapView.addAnnotation(mapLocation)
     }
@@ -32,18 +37,18 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
                 return
             }
 
-            let studentLocationRequest = PostStudentLocationRequest(uniqueKey: userDataReponse.accountKey, firstName: userDataReponse.firstName, lastName: userDataReponse.lastName, mapString: self.locationString, mediaURL: self.url, latitude: Double(self.location.latitude), longitude: Double(self.location.longitude))
+            let studentLocationRequest = PostStudentLocationRequest(uniqueKey: userDataReponse.accountKey, firstName: userDataReponse.firstName, lastName: userDataReponse.lastName, mapString: self.locationString, mediaURL: self.url, latitude: self.location.latitude, longitude: self.location.longitude)
             self.postLocation(postRequest: studentLocationRequest)
         })
     }
     
     func postLocation(postRequest: PostStudentLocationRequest) {
         APIClient.postStudentLocation(postRequest: postRequest, completion: {(postResponse, error) in
-            if (error != nil) {
+            guard postResponse != nil else {
                 self.showError(message: error?.localizedDescription ?? "")
-            } else {
-                self.navigationController?.dismiss(animated: true, completion: nil)
+                return
             }
+            self.dismiss(animated: true, completion: {})
         })
     }
     
