@@ -10,7 +10,7 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    var locations = [PinnedLocation]()
+    var locations = [StudentInformation]()
     var annotations = [MKPointAnnotation]()
     let reuseId = "pin"
     
@@ -22,7 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         self.loadLocationsData()
-        self.locations = LocationModel.locationResults
+        self.locations = StudentInformationModel.locationResults
         self.mapView.addAnnotations(annotations)
     }
     
@@ -34,8 +34,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             DispatchQueue.main.async {
-                LocationModel.locationResults = data
-                self.locations = LocationModel.locationResults
+                StudentInformationModel.locationResults = data
+                self.locations = StudentInformationModel.locationResults
                 self.parsePinnedLocations()
             }
         })
@@ -86,7 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Button functions
     @IBAction func refreshMapData(_ sender: UIBarButtonItem) {
         self.loadLocationsData()
-        self.locations = LocationModel.locationResults
+        self.locations = StudentInformationModel.locationResults
         self.mapView.addAnnotations(annotations)
     }
     

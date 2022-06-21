@@ -7,8 +7,8 @@
 
 import Foundation
 
-class LocationModel {
+class StudentInformationModel {
     
-    static var locationResults = [PinnedLocation]()
+    static var locationResults = [StudentInformation]()
     
 }

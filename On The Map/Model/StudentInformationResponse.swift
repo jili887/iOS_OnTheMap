@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct LocationResponse: Codable {
-    let locations: [PinnedLocation]
+struct StudentInformationResponse: Codable {
+    let studentInformationResults: [StudentInformation]
     
     enum CodingKeys: String, CodingKey {
-        case locations = "results"
+        case studentInformationResults = "results"
     }
 }
 
-struct PinnedLocation: Codable {
+struct StudentInformation: Codable {
     let objectId: String
     let uniqueKey: String
     let firstName: String

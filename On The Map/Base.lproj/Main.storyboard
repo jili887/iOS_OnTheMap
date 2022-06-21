@@ -422,7 +422,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="vwR-s6-XuD"/>
+                    <navigationItem key="navigationItem" title="Add Location" id="vwR-s6-XuD"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="confirmMapView" destination="BWU-RF-wRg" id="3Oh-5l-Y0V"/>

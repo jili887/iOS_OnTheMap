@@ -22,9 +22,9 @@
 		2AA9EAE1284DAEE60025A259 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EAE0284DAEE60025A259 /* LoginRequest.swift */; };
 		2AA9EAE3284DB0820025A259 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EAE2284DB0820025A259 /* LoginResponse.swift */; };
 		2AA9EAE5284DB1D50025A259 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9EAE4284DB1D50025A259 /* APIClient.swift */; };
-		2AAC8FA7284EB845008E30A6 /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC8FA6284EB845008E30A6 /* LocationResponse.swift */; };
+		2AAC8FA7284EB845008E30A6 /* StudentInformationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC8FA6284EB845008E30A6 /* StudentInformationResponse.swift */; };
 		2AAC8FA9284EBE9E008E30A6 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC8FA8284EBE9E008E30A6 /* TableViewController.swift */; };
-		2AAC8FAB28504450008E30A6 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC8FAA28504450008E30A6 /* LocationModel.swift */; };
+		2AAC8FAB28504450008E30A6 /* StudentInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC8FAA28504450008E30A6 /* StudentInformationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,9 +45,9 @@
 		2AA9EAE0284DAEE60025A259 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		2AA9EAE2284DB0820025A259 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		2AA9EAE4284DB1D50025A259 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		2AAC8FA6284EB845008E30A6 /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
+		2AAC8FA6284EB845008E30A6 /* StudentInformationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformationResponse.swift; sourceTree = "<group>"; };
 		2AAC8FA8284EBE9E008E30A6 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		2AAC8FAA28504450008E30A6 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		2AAC8FAA28504450008E30A6 /* StudentInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +100,8 @@
 				2AA9EAE0284DAEE60025A259 /* LoginRequest.swift */,
 				2AA9EAE2284DB0820025A259 /* LoginResponse.swift */,
 				2AA9EAE4284DB1D50025A259 /* APIClient.swift */,
-				2AAC8FA6284EB845008E30A6 /* LocationResponse.swift */,
-				2AAC8FAA28504450008E30A6 /* LocationModel.swift */,
+				2AAC8FA6284EB845008E30A6 /* StudentInformationResponse.swift */,
+				2AAC8FAA28504450008E30A6 /* StudentInformationModel.swift */,
 				2A7CF80428593BE7004AC761 /* PostStudentLocationResponse.swift */,
 				2A7CF80628593D96004AC761 /* PostStudentLocationRequest.swift */,
 				2A7CF80828594633004AC761 /* UserDataResponse.swift */,
@@ -207,8 +207,8 @@
 				2A7CF80528593BE7004AC761 /* PostStudentLocationResponse.swift in Sources */,
 				2A7A3730285193BB0099E945 /* MapViewController.swift in Sources */,
 				2AAC8FA9284EBE9E008E30A6 /* TableViewController.swift in Sources */,
-				2AAC8FAB28504450008E30A6 /* LocationModel.swift in Sources */,
-				2AAC8FA7284EB845008E30A6 /* LocationResponse.swift in Sources */,
+				2AAC8FAB28504450008E30A6 /* StudentInformationModel.swift in Sources */,
+				2AAC8FA7284EB845008E30A6 /* StudentInformationResponse.swift in Sources */,
 				2AA9EAE1284DAEE60025A259 /* LoginRequest.swift in Sources */,
 				2A7CF80928594633004AC761 /* UserDataResponse.swift in Sources */,
 				2AA9EAE3284DB0820025A259 /* LoginResponse.swift in Sources */,

@@ -24,10 +24,6 @@ class LoginViewController: UIViewController {
         passwordTextField.text = ""
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: Login button
     @IBAction func loginTapped(_ sender: Any) {
         setLoggingIn(true)
@@ -37,9 +33,11 @@ class LoginViewController: UIViewController {
     func handleLoginResponse(success: Bool, error: Error?) {
         setLoggingIn(false)
         if success {
+            emailTextField.text = ""
+            passwordTextField.text = ""
             performSegue(withIdentifier: "LoginSuccess", sender: self)
         } else {
-            showLoginError(message: error?.localizedDescription ?? "")
+            showLoginError(message: error?.localizedDescription ?? "Login Failed")
         }
     }
     

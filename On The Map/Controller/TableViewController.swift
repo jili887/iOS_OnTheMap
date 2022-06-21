@@ -10,13 +10,13 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var locations = [PinnedLocation]()
+    var locations = [StudentInformation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.loadLocationsData()
-        self.locations = LocationModel.locationResults
+        self.locations = StudentInformationModel.locationResults
         self.tableView.reloadData()
     }
     
@@ -28,8 +28,8 @@ class TableViewController: UITableViewController {
                 return
             }
             DispatchQueue.main.async {
-                LocationModel.locationResults = data
-                self.locations = LocationModel.locationResults
+                StudentInformationModel.locationResults = data
+                self.locations = StudentInformationModel.locationResults
             }
         })
     }
@@ -63,7 +63,7 @@ class TableViewController: UITableViewController {
     //  MARK: Button functions
     @IBAction func refreshData(_ sender: UIBarButtonItem) {
         self.loadLocationsData()
-        self.locations = LocationModel.locationResults
+        self.locations = StudentInformationModel.locationResults
         self.tableView.reloadData()
     }
     
