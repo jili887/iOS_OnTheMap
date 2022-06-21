@@ -142,8 +142,10 @@ class APIClient {
                 return
             }
             let decoder = JSONDecoder()
+            let range = 5..<data.count
+            let newData = data.subdata(in: range) /* subset response data! */
             do {
-                let responseObject = try decoder.decode(UserDataResponse.self, from: data)
+                let responseObject = try decoder.decode(UserDataResponse.self, from: newData)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
