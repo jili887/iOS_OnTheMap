@@ -84,7 +84,6 @@
 				2AA9EADE284D41150025A259 /* View */,
 				2AA9EADD284D410D0025A259 /* Model */,
 				2AA9EAC9284D3DA50025A259 /* AppDelegate.swift */,
-				2AA9EACD284D3DA50025A259 /* LoginViewController.swift */,
 				2AA9EACB284D3DA50025A259 /* SceneDelegate.swift */,
 				2AA9EACF284D3DA50025A259 /* Main.storyboard */,
 				2AA9EAD2284D3DA60025A259 /* Assets.xcassets */,
@@ -123,6 +122,7 @@
 				2A7A372F285193BB0099E945 /* MapViewController.swift */,
 				2A7CF7FE28569E35004AC761 /* AddPinViewController.swift */,
 				2A7CF80028582952004AC761 /* ConfirmViewController.swift */,
+				2AA9EACD284D3DA50025A259 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

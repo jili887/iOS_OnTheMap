@@ -38,6 +38,7 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
     @IBAction func finish(_ sender: Any) {
         APIClient.getUserData(completion: {(userDataReponse, error) in
             guard let userDataReponse = userDataReponse else {
+                self.showError(title: "Oops", message: error?.localizedDescription ?? "Unable to get user information")
                 return
             }
 
@@ -49,15 +50,15 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
     func postLocation(postRequest: PostStudentLocationRequest) {
         APIClient.postStudentLocation(postRequest: postRequest, completion: {(postResponse, error) in
             guard postResponse != nil else {
-                self.showError(message: error?.localizedDescription ?? "")
+                self.showError(title: "Oops", message: error?.localizedDescription ?? "Failed to add new location")
                 return
             }
             self.dismiss(animated: true, completion: {})
         })
     }
     
-    func showError(message: String) {
-        let alertVC = UIAlertController(title: "Add new location Failed", message: message, preferredStyle: .alert)
+    func showError(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
@@ -83,6 +84,8 @@ class ConfirmViewController: UIViewController, MKMapViewDelegate {
         let app = UIApplication.shared
         if let toOpen = view.annotation!.subtitle! {
             app.open(URL(string: toOpen)!)
+        } else {
+            showError(title: "Oops", message: "Unable to open the URL")
         }
     }
 }
