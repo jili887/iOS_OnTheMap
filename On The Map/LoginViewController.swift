@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
             passwordTextField.text = ""
             performSegue(withIdentifier: "LoginSuccess", sender: self)
         } else {
-            showLoginError(message: error?.localizedDescription ?? "Login Failed")
+            showLoginError(title: "Oops", message: error?.localizedDescription ?? "Login Failed")
         }
     }
     
@@ -52,10 +52,10 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = !loggingIn
     }
     
-    func showLoginError(message: String) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+    func showLoginError(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true, completion: nil)
         setLoggingIn(false)
     }
     

@@ -81,12 +81,12 @@ class APIClient {
     }
     
     // MARK: Get Pinned Locations Network call
-    class func getPinnedLocations(completion: @escaping ([StudentInformation]?, Error?) -> Void) {
+    class func getPinnedLocations(completion: @escaping (Bool, Error?) -> Void) {
         let request = URLRequest(url: Endpoints.getPinnedLocations.url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
-                    completion([], error)
+                    completion(false, error)
                 }
                 return
             }
@@ -94,11 +94,12 @@ class APIClient {
             do {
                 let responseObject = try decoder.decode(StudentInformationResponse.self, from: data)
                 DispatchQueue.main.async {
-                    completion(responseObject.studentInformationResults, nil)
+                    StudentInformationModel.locationResults = responseObject.studentInformationResults
+                    completion(true, nil)
                 }
             } catch {
                 DispatchQueue.main.async {
-                    completion([], error)
+                    completion(false, error)
                 }
             }
         }

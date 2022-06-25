@@ -10,10 +10,8 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    var locations = [StudentInformation]()
     var annotations = [MKPointAnnotation]()
     let reuseId = "pin"
-    
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -21,29 +19,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         
-        self.loadLocationsData()
-        self.locations = StudentInformationModel.locationResults
-        self.mapView.addAnnotations(annotations)
+        clearAnnotations()
+        getStudentLocations()
     }
     
-    // MARK: Load pined locations for Map view
-    func loadLocationsData() {
-        APIClient.getPinnedLocations(completion: { (data, error) in
-            guard let data = data else {
-                self.showDownloadError(message: error?.localizedDescription ?? "")
-                return
-            }
-            DispatchQueue.main.async {
-                StudentInformationModel.locationResults = data
-                self.locations = StudentInformationModel.locationResults
-                self.parsePinnedLocations()
+    // MARK: Get Pinned locations for MapView
+    func getStudentLocations() {
+        APIClient.getPinnedLocations(completion: { (success, error) in
+            if success {
+                DispatchQueue.main.async {
+                    self.parseLocationsData()
+                }
+            } else {
+                self.showError(title: "Oops", message: error?.localizedDescription ?? "Download failed")
             }
         })
     }
     
-    // MARK: Parse PinnedLocation to MKPointAnnotation
-    func parsePinnedLocations() {
-        for location in locations {
+    // MARK: Parse and Load Pinned locations for MapView
+    func parseLocationsData() {
+        for location in StudentInformationModel.locationResults {
             let lat = CLLocationDegrees(location.latitude)
             let long = CLLocationDegrees(location.longitude)
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -55,6 +50,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotations.append(annotation)
         }
         self.mapView.addAnnotations(annotations)
+    }
+    
+    // MARK: Clear old Pinned locations
+    func clearAnnotations() {
+        self.annotations.removeAll()
+        self.mapView.removeAnnotations(mapView.annotations)
     }
     
     // MARK: MKMapViewDelegate
@@ -79,15 +80,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
                 app.open(URL(string: toOpen)!)
+            } else {
+                showError(title: "Oops", message: "Unable to open the URL")
             }
         }
     }
     
     // MARK: Button functions
     @IBAction func refreshMapData(_ sender: UIBarButtonItem) {
-        self.loadLocationsData()
-        self.locations = StudentInformationModel.locationResults
-        self.mapView.addAnnotations(annotations)
+        APIClient.getPinnedLocations(completion: { (success, error) in
+            if success {
+                self.clearAnnotations()
+                self.getStudentLocations()
+            } else {
+                self.showError(title: "Oops", message: error?.localizedDescription ?? "Refresh failed")
+            }
+        })
     }
     
     @IBAction func logout(_ sender: UIBarButtonItem) {
@@ -99,9 +107,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // MARK: Handle download error
-    func showDownloadError(message: String) {
-        let alertVC = UIAlertController(title: "Download Failed", message: message, preferredStyle: .alert)
+    func showError(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true, completion: nil)
     }
 }

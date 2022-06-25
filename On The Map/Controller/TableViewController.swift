@@ -10,28 +10,10 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var locations = [StudentInformation]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.loadLocationsData()
-        self.locations = StudentInformationModel.locationResults
-        self.tableView.reloadData()
-    }
     
-    // MARK: Load pined locations for Table view
-    func loadLocationsData() {
-        APIClient.getPinnedLocations(completion: { (data, error) in
-            guard let data = data else {
-                self.showDownloadError(message: error?.localizedDescription ?? "")
-                return
-            }
-            DispatchQueue.main.async {
-                StudentInformationModel.locationResults = data
-                self.locations = StudentInformationModel.locationResults
-            }
-        })
+        self.tableView.reloadData()
     }
     
     // MARK: Table View cell
@@ -40,13 +22,13 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.locations.count
+        return StudentInformationModel.locationResults.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PinnedLocationCell")!
         
-        let data = self.locations[indexPath.row]
+        let data = StudentInformationModel.locationResults[indexPath.row]
         
         cell.textLabel?.text = data.firstName + data.lastName
         cell.detailTextLabel?.text = data.mediaURL
@@ -55,16 +37,22 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = URL(string: self.locations[indexPath.row].mediaURL) {
+        if let url = URL(string: StudentInformationModel.locationResults[indexPath.row].mediaURL) {
             UIApplication.shared.open(url)
+        } else {
+            showError(title: "Oops", message: "Unable to open the URL")
         }
     }
     
     //  MARK: Button functions
     @IBAction func refreshData(_ sender: UIBarButtonItem) {
-        self.loadLocationsData()
-        self.locations = StudentInformationModel.locationResults
-        self.tableView.reloadData()
+        APIClient.getPinnedLocations(completion: { (success, error) in
+            if success {
+                self.tableView.reloadData()
+            } else {
+                self.showError(title: "Oops", message: error?.localizedDescription ?? "Refresh failed")
+            }
+        })
     }
     
     @IBAction func logout(_ sender: UIBarButtonItem) {
@@ -76,9 +64,9 @@ class TableViewController: UITableViewController {
     }
     
     // MARK: Handle download error
-    func showDownloadError(message: String) {
-        let alertVC = UIAlertController(title: "Download Failed", message: message, preferredStyle: .alert)
+    func showError(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true, completion: nil)
     }
 }
